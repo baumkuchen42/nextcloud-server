@@ -41,7 +41,14 @@ class Helper extends \OC\Share\Constants {
 		if ($defaultExpireDate === 'yes') {
 			$enforceExpireDate = $config->getAppValue('core', 'shareapi_enforce_expire_date', 'no');
 			$defaultExpireSettings['defaultExpireDateSet'] = true;
-			$defaultExpireSettings['expireAfterDays'] = (int)$config->getAppValue('core', 'shareapi_expire_after_n_days', '7');
+			$defaultExpireSettings['expireMinAfterDays'] = (int)$config->getAppValue('core', 'shareapi_expire_min_after_n_days', '0');
+
+			//B1: if min expire date is set (not null), set default to its value instead of "max"
+			if ($defaultExpireSettings['expireMinAfterDays']) {
+				$defaultExpireSettings['expireAfterDays'] = $defaultExpireSettings['expireMinAfterDays'];
+			} else {
+				$defaultExpireSettings['expireAfterDays'] = (int)$config->getAppValue('core', 'shareapi_expire_after_n_days', '7');
+			}
 			$defaultExpireSettings['enforceExpireDate'] = $enforceExpireDate === 'yes';
 		}
 
@@ -77,9 +84,14 @@ class Helper extends \OC\Share\Constants {
 
 		if (isset($userExpireDate)) {
 			// if the admin decided to enforce the default expire date then we only take
-			// the user defined expire date of it is before the default expire date
+			// the user defined expire date if it is before the default expire date
+			// B1: use userExpireDate only if it is after min and before max
 			if ($defaultExpires && !empty($defaultExpireSettings['enforceExpireDate'])) {
-				$expires = min($userExpireDate, $defaultExpires);
+				if ($userExpireDate > $defaultExpireSettings['expireMinAfterDays']) {
+					$expires = min($userExpireDate, $defaultExpires);
+					} else {
+						$expires = $defaultExpireSettings['expireMinAfterDays'];
+					}
 			} else {
 				$expires = $userExpireDate;
 			}

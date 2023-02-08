@@ -435,6 +435,13 @@ export default {
 
 		dateMaxEnforced() {
 			if (this.config.isDefaultExpireDateEnforced) {
+				return new Date(new Date().setDate(new Date().getDate() + this.config.defaultMaxExpireDate))
+			}
+			return null
+		},
+
+		dateMinEnforced() {
+			if (this.config.isDefaultExpireDateEnforced) {
 				return new Date(new Date().setDate(new Date().getDate() + this.config.defaultExpireDate))
 			}
 			return null

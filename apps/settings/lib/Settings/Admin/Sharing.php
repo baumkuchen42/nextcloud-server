@@ -98,6 +98,7 @@ class Sharing implements IDelegatedSettings {
 			'onlyShareWithGroupMembers' => $this->shareManager->shareWithGroupMembersOnly(),
 			'shareAPIEnabled' => $this->config->getAppValue('core', 'shareapi_enabled', 'yes'),
 			'shareDefaultExpireDateSet' => $this->config->getAppValue('core', 'shareapi_default_expire_date', 'no'),
+			'shareExpireMinAfterNDays' => $this->config->getAppValue('core', 'shareapi_expire_min_after_n_days', '0'),
 			'shareExpireAfterNDays' => $this->config->getAppValue('core', 'shareapi_expire_after_n_days', '7'),
 			'shareEnforceExpireDate' => $this->config->getAppValue('core', 'shareapi_enforce_expire_date', 'no'),
 			'shareExcludeGroups' => $this->config->getAppValue('core', 'shareapi_exclude_groups', 'no') === 'yes',

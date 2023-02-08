@@ -140,12 +140,19 @@
 		<p id="setDefaultExpireDate" class="double-indent <?php if ($_['allowLinks'] !== 'yes' || $_['shareDefaultExpireDateSet'] === 'no' || $_['shareAPIEnabled'] === 'no') {
 	p('hidden');
 }?>">
-			<?php p($l->t('Expire after'). ' '); ?>
+			<?php p($l->t('Expire min after'). ' '); ?>
+			<input type="text" name='shareapi_expire_min_after_n_days' id="shareapiExpireAfterMinNDays" placeholder="<?php p('0')?>"
+				value='<?php p($_['shareExpireMinAfterNDays']) ?>' />
+			<?php p($l->t('days')); ?>
+			<br>
+			<?php p($l->t('Expire max after'). ' '); ?>
 			<input type="text" name='shareapi_expire_after_n_days' id="shareapiExpireAfterNDays" placeholder="<?php p('7')?>"
-				   value='<?php p($_['shareExpireAfterNDays']) ?>' />
+				value='<?php p($_['shareExpireAfterNDays']) ?>' />
+			<?php p($l->t('days')); ?>
+			<br>
 			<?php p($l->t('day(s)')); ?>
 			<input type="checkbox" name="shareapi_enforce_expire_date" id="shareapiEnforceExpireDate" class="checkbox"
-				   value="1" <?php if ($_['shareEnforceExpireDate'] === 'yes') {
+				value="1" <?php if ($_['shareEnforceExpireDate'] === 'yes') {
 	print_unescaped('checked="checked"');
 } ?> />
 			<label for="shareapiEnforceExpireDate"><?php p($l->t('Enforce expiration date'));?></label><br/>

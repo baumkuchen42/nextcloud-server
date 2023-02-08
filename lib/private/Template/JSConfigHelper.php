@@ -129,7 +129,15 @@ class JSConfigHelper {
 		$defaultExpireDateEnabled = $this->config->getAppValue('core', 'shareapi_default_expire_date', 'no') === 'yes';
 		$defaultExpireDate = $enforceDefaultExpireDate = null;
 		if ($defaultExpireDateEnabled) {
-			$defaultExpireDate = (int)$this->config->getAppValue('core', 'shareapi_expire_after_n_days', '7');
+			$defaultMinExpireDate = (int)$this->config->getAppValue('core', 'shareapi_expire_min_after_n_days', '0');
+			$defaultMaxExpireDate = (int)$this->config->getAppValue('core', 'shareapi_expire_after_n_days', '7');
+	
+			//B1: set min date IF not null, otherwise set max/default
+			if ($defaultMinExpireDate) {
+				$defaultExpireDate = $defaultMinExpireDate;
+			} else {
+				$defaultExpireDate = $defaultMaxExpireDate;
+			}
 			$enforceDefaultExpireDate = $this->config->getAppValue('core', 'shareapi_enforce_expire_date', 'no') === 'yes';
 		}
 		$outgoingServer2serverShareEnabled = $this->config->getAppValue('files_sharing', 'outgoing_server2server_share_enabled', 'yes') === 'yes';
@@ -253,6 +261,7 @@ class JSConfigHelper {
 				'core' => [
 					'defaultExpireDateEnabled' => $defaultExpireDateEnabled,
 					'defaultExpireDate' => $defaultExpireDate,
+					'defaultMaxExpireDate' => $defaultMaxExpireDate,
 					'defaultExpireDateEnforced' => $enforceDefaultExpireDate,
 					'enforcePasswordForPublicLink' => Util::isPublicLinkPasswordRequired(),
 					'enableLinkPasswordByDefault' => $enableLinkPasswordByDefault,

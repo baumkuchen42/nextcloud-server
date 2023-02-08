@@ -227,6 +227,17 @@ export default class Config {
 	}
 
 	/**
+		* Get the default max days to link shares expiration
+		*
+		* @return {number}
+		* @readonly
+		* @memberof Config
+		*/
+	get defaultMaxExpireDate() {
+		return OC.appConfig.core.defaultMaxExpireDate
+	}
+
+	/**
 	 * Get the default days to internal shares expiration
 	 *
 	 * @return {number}

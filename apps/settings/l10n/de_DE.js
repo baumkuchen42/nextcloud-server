@@ -557,6 +557,10 @@ OC.L10N.register(
     "It can take up to 24 hours before the account is displayed as verified." : "Es kann bis zu 24 Stunden dauern, bis das Konto als überprüt angezeigt wird.",
     "Link https://…" : "Link https://…",
     "Change privacy level of Twitter profile" : "Datenschutzstufe des Twitter-Profils ändern",
-    "Twitter handle @…" : "Twitter-Handle @…"
+    "Twitter handle @…" : "Twitter-Handle @…",
+    "Expire max after": "Ablauf spätestens nach",
+    "Expire min after": "Ablauf frühestens nach",
+    "Cannot set expiration date earlier than %n day from now" : "Kann Ablaufdatum nicht früher als %s Tag setzen.",
+    "Cannot set expiration date earlier than %n days from now" : "Kann Ablaufdatum nicht früher als %s Tage setzen."
 },
 "nplurals=2; plural=(n != 1);");
