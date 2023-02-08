@@ -468,8 +468,11 @@ OC.L10N.register(
     "As admin you can fine-tune the sharing behavior. Please see the documentation for more information." : "Als Administrator können sie das Teilen-Verhalten feinabstimmen. Weitere Informationen finden Sie in der Dokumentation.",
     "Allow apps to use the Share API" : "Apps die Benutzung der Share-API erlauben",
     "Set default expiration date for shares" : "Legen Sie das Standardablaufdatum für Freigaben fest",
-    "Expire after" : "Ablauf nach",
-    "day(s)" : "Tag(e)",
+    "day(s)" : "Tag(en)",
+    "Expire max after": "Ablauf spätestens nach",
+    "Expire min after": "Ablauf frühestens nach",
+    "Cannot set expiration date earlier than %n day from now" : "Kann Ablaufdatum nicht früher als %n Tag setzen.",
+    "Cannot set expiration date earlier than %n days from now" : "Kann Ablaufdatum nicht früher als %n Tage setzen.",
     "Enforce expiration date" : "Ablaufdatum erzwingen",
     "Set default expiration date for shares to other servers" : "Standardablaufdatum für Freigaben an andere Server festlegen",
     "Allow users to share via link and emails" : "Benutzern erlauben, Inhalte über Links und E-Mails zu teilen.",
@@ -557,10 +560,6 @@ OC.L10N.register(
     "It can take up to 24 hours before the account is displayed as verified." : "Es kann bis zu 24 Stunden dauern, bis das Konto als überprüt angezeigt wird.",
     "Link https://…" : "Link https://…",
     "Change privacy level of Twitter profile" : "Datenschutzstufe des Twitter-Profils ändern",
-    "Twitter handle @…" : "Twitter-Handle @…",
-    "Expire max after": "Ablauf spätestens nach",
-    "Expire min after": "Ablauf frühestens nach",
-    "Cannot set expiration date earlier than %n day from now" : "Kann Ablaufdatum nicht früher als %s Tag setzen.",
-    "Cannot set expiration date earlier than %n days from now" : "Kann Ablaufdatum nicht früher als %s Tage setzen."
+    "Twitter handle @…" : "Twitter-Handle @…"
 },
 "nplurals=2; plural=(n != 1);");
