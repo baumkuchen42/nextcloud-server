@@ -33,7 +33,6 @@
 			<!-- using shares[index] to work with .sync -->
 			<SharingEntryLink v-for="(share, index) in shares"
 				:key="share.id"
-				:index="shares.length > 1 ? index + 1 : null"
 				:can-reshare="canReshare"
 				:share.sync="shares[index]"
 				:file-info="fileInfo"

@@ -68,7 +68,7 @@ OC.L10N.register(
     "Thunderbird & Outlook addons" : "Thunderbird & Outlook addons",
     "Custom user agent" : "Aangepaste 'user agent'",
     "At least one event must be selected" : "Er moet minimaal één afspraak worden geselecteerd",
-    "Add new flow" : "Nieuwe flow toevoegen",
+    "Add new flow" : "Toevoegen nieuwe flow",
     "When" : "Wanneer",
     "and" : "en",
     "Cancel" : "Annuleren",

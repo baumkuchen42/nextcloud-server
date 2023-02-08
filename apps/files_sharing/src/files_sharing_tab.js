@@ -22,6 +22,7 @@
  */
 
 import Vue from 'vue'
+import VueClipboard from 'vue-clipboard2'
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 
 import SharingTab from './views/SharingTab'
@@ -41,6 +42,7 @@ Object.assign(window.OCA.Sharing, { ShareTabSections: new TabSections() })
 
 Vue.prototype.t = t
 Vue.prototype.n = n
+Vue.use(VueClipboard)
 
 // Init Sharing tab component
 const View = Vue.extend(SharingTab)

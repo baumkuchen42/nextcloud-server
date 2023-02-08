@@ -53,13 +53,11 @@
 
 		<div class="app-level">
 			<span v-if="app.level === 300"
-				:title="t('settings', 'This app is supported via your current Nextcloud subscription.')"
-				:aria-label="t('settings', 'This app is supported via your current Nextcloud subscription.')"
+				v-tooltip.auto="t('settings', 'This app is supported via your current Nextcloud subscription.')"
 				class="supported icon-checkmark-color">
 				{{ t('settings', 'Supported') }}</span>
 			<span v-if="app.level === 200"
-				:title="t('settings', 'Featured apps are developed by and within the community. They offer central functionality and are ready for production use.')"
-				:aria-label="t('settings', 'Featured apps are developed by and within the community. They offer central functionality and are ready for production use.')"
+				v-tooltip.auto="t('settings', 'Featured apps are developed by and within the community. They offer central functionality and are ready for production use.')"
 				class="official icon-checkmark">
 				{{ t('settings', 'Featured') }}</span>
 			<AppScore v-if="hasRating && !listView" :score="app.score" />
@@ -89,16 +87,14 @@
 				{{ t('settings','Disable') }}
 			</NcButton>
 			<NcButton v-if="!app.active && (app.canInstall || app.isCompatible)"
-				:title="enableButtonTooltip"
-				:aria-label="enableButtonTooltip"
+				v-tooltip.auto="enableButtonTooltip"
 				type="primary"
 				:disabled="!app.canInstall || installing || isLoading"
 				@click.stop="enable(app.id)">
 				{{ enableButtonText }}
 			</NcButton>
 			<NcButton v-else-if="!app.active"
-				:title="forceEnableButtonTooltip"
-				:aria-label="forceEnableButtonTooltip"
+				v-tooltip.auto="forceEnableButtonTooltip"
 				type="secondary"
 				:disabled="installing || isLoading"
 				@click.stop="forceEnable(app.id)">

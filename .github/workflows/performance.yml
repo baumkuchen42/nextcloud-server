@@ -24,7 +24,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
-          tools: phpunit:9
+          tools: phpunit
           extensions: mbstring, fileinfo, intl, sqlite, pdo_sqlite, zip, gd
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -41,7 +41,7 @@ jobs:
           blueprint: tests/blueprints/basic.toml
           ref: ${{ github.event.pull_request.head.ref }}
       - name: Run before measurements
-        uses: nextcloud/profiler@1e66a9de5f76a01e9d1db4f0153bcc1cbf989b3d
+        uses: nextcloud/profiler@fa03a1e6864fcb63fb92b8940fa72f5191baffbe
         with:
           run: |
             curl -s -X PROPFIND -u test:test http://localhost:8080/remote.php/dav/files/test
@@ -50,20 +50,18 @@ jobs:
             curl -s -u test:test -T README.md http://localhost:8080/remote.php/dav/files/test/new_file.txt
             curl -s -u test:test -X DELETE http://localhost:8080/remote.php/dav/files/test/new_file.txt
           output: before.json
-          profiler-branch: stable25
 
       - name: Apply PR
         run: |
-          git remote add pr ${{ github.event.pull_request.head.repo.clone_url }}
-          git fetch pr ${{ github.event.pull_request.head.ref }}
-          git checkout -b pr/${{ github.event.pull_request.head.ref }}
+          git fetch origin ${{ github.event.pull_request.head.ref }}
+          git checkout ${{ github.event.pull_request.head.ref }}
           git submodule update
 
           ./occ upgrade
 
       - name: Run after measurements
         id: compare
-        uses: nextcloud/profiler@1e66a9de5f76a01e9d1db4f0153bcc1cbf989b3d
+        uses: nextcloud/profiler@fa03a1e6864fcb63fb92b8940fa72f5191baffbe
         with:
           run: |
             curl -s -X PROPFIND -u test:test http://localhost:8080/remote.php/dav/files/test
@@ -72,7 +70,6 @@ jobs:
             curl -s -u test:test -T README.md http://localhost:8080/remote.php/dav/files/test/new_file.txt
             curl -s -u test:test -X DELETE http://localhost:8080/remote.php/dav/files/test/new_file.txt
           output: after.json
-          profiler-branch: stable25
           compare-with: before.json
 
       - name: Upload profiles

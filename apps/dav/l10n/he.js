@@ -50,12 +50,15 @@ OC.L10N.register(
     "Description: %s" : "תיאור: %s",
     "Where: %s" : "איפה: %s",
     "%1$s via %2$s" : "%1$s דרך %2$s",
-    "Organizer:" : "ארגון:",
-    "Attendees:" : "משתתפים:",
+    "Invitation canceled" : "ההזמנה בוטלה",
+    "Invitation updated" : "ההזמנה עודכנה",
+    "Invitation" : "הזמנה",
     "Title:" : "כותרת:",
     "Time:" : "שעה:",
     "Location:" : "מיקום:",
     "Link:" : "קישור:",
+    "Organizer:" : "ארגון:",
+    "Attendees:" : "משתתפים:",
     "Accept" : "קבלה",
     "Decline" : "דחייה",
     "More options …" : "אפשרויות נוספות…",
@@ -107,9 +110,6 @@ OC.L10N.register(
     "You solved todo {todo} in list {calendar}" : "פתרת משימה לביצוע {todo} ברשימה {calendar}",
     "{actor} reopened todo {todo} in list {calendar}" : "המשימה לביצוע {todo} ברשימה {calendar} נפתחה מחדש על ידי {actor}",
     "You reopened todo {todo} in list {calendar}" : "פתחת מחדש את המשימה לביצוע {todo} ברשימה {calendar}",
-    "A calendar <strong>todo</strong> was modified" : "נערכה <strong>מטלה</strong> בלוח שנה",
-    "Invitation canceled" : "ההזמנה בוטלה",
-    "Invitation updated" : "ההזמנה עודכנה",
-    "Invitation" : "הזמנה"
+    "A calendar <strong>todo</strong> was modified" : "נערכה <strong>מטלה</strong> בלוח שנה"
 },
 "nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;");

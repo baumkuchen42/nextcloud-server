@@ -37,12 +37,14 @@
 			<span v-if="wiping" class="wiping-warning">({{ t('settings', 'Marked for remote wipe') }})</span>
 		</td>
 		<td>
-			<span :title="lastActivity" class="last-activity">{{ lastActivityRelative }}</span>
+			<span v-tooltip="lastActivity" class="last-activity">{{ lastActivityRelative }}</span>
 		</td>
 		<td class="more">
 			<NcActions v-if="!token.current"
-				:title="t('settings', 'Device settings')"
-				:aria-label="t('settings', 'Device settings')"
+				v-tooltip.auto="{
+					content: t('settings', 'Device settings'),
+					container: 'body'
+				}"
 				:open.sync="actionOpen">
 				<NcActionCheckbox v-if="token.type === 1"
 					:checked="token.scope.filesystem"

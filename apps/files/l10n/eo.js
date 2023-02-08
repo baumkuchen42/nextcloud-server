@@ -123,6 +123,7 @@ OC.L10N.register(
     "A file has been added to or removed from your <strong>favorites</strong>" : "Dosiero aldoniĝis aŭ foriĝis el viaj <strong>pliŝataĵoj</strong>",
     "A file or folder has been <strong>changed</strong>" : "Dosiero aŭ dosierujo <strong>ŝanĝiĝis</strong>",
     "All files" : "Ĉiuj dosieroj",
+    "Unlimited" : "Senlima",
     "Upload (max. %s)" : "Alŝuti (maks. %s)",
     "Accept" : "Akcepti",
     "Reject" : "Rifuzi",
@@ -141,6 +142,9 @@ OC.L10N.register(
     "Create" : "Krei",
     "Creating file" : "Kreante dosieron",
     "Templates" : "Ŝablonoj",
+    "%s used" : "%s uzataj",
+    "%1$s of %2$s used" : "%1$s uzataj el %2$s",
+    "WebDAV" : "WebDAV",
     "Toggle grid view" : "Baskuligi kradan vidon",
     "No files in here" : "Neniu dosiero ĉi tie",
     "Upload some content or sync with your devices!" : "Alŝutu iom da enhavo aŭ sinkronigu kun viaj aparatoj!",
@@ -163,10 +167,6 @@ OC.L10N.register(
     "You don’t have permission to upload or create files here" : "Vi ne permesatas alŝuti aŭ krei dosierojn ĉi tie",
     "New" : "Nova",
     "Copied!" : "Kopiita!",
-    "Unlimited" : "Senlima",
-    "%s used" : "%s uzataj",
-    "%1$s of %2$s used" : "%1$s uzataj el %2$s",
-    "Settings" : "Agordo",
-    "WebDAV" : "WebDAV"
+    "Settings" : "Agordo"
 },
 "nplurals=2; plural=(n != 1);");

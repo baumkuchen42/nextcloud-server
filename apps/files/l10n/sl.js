@@ -142,6 +142,7 @@ OC.L10N.register(
     "A file or folder has been <strong>changed</strong>" : "<strong>Spremenjena</strong> je bila datoteka ali mapa",
     "A favorite file or folder has been <strong>changed</strong>" : "<strong>Spremenjena</strong> je bila priljubljena datoteka ali mapa",
     "All files" : "Vse datoteke",
+    "Unlimited" : "Neomejeno",
     "Upload (max. %s)" : "Pošiljanje (omejitev %s)",
     "Accept" : "Sprejmi",
     "Reject" : "Zavrni",
@@ -183,6 +184,9 @@ OC.L10N.register(
     "Set up templates folder" : "Nastavitev mape predlog",
     "Templates" : "Predloge",
     "Unable to initialize the templates directory" : "Ni mogoče začeti mape predlog",
+    "%s used" : "Uporabljeno %s",
+    "%1$s of %2$s used" : "Uporabljeno %1$s od %2$s",
+    "WebDAV" : "WebDAV",
     "Toggle %1$s sublist" : "Preklopi podseznam %1$s",
     "Toggle grid view" : "Preklopi mrežni pogled",
     "No files in here" : "V mapi ni datotek",
@@ -207,11 +211,7 @@ OC.L10N.register(
     "You don’t have permission to upload or create files here" : "Ni ustreznih dovoljenj za pošiljanje in ustvarjanje datotek na tem mestu.",
     "New" : "Novo",
     "Copied!" : "Kopirano!",
-    "Unlimited" : "Neomejeno",
     "Cannot transfer ownership of a file or folder you don't own" : "Ni mogoče prenesti lastništva datotek in map, katerih niste lastnik",
-    "%s used" : "Uporabljeno %s",
-    "%1$s of %2$s used" : "Uporabljeno %1$s od %2$s",
-    "Settings" : "Nastavitve",
-    "WebDAV" : "WebDAV"
+    "Settings" : "Nastavitve"
 },
 "nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);");

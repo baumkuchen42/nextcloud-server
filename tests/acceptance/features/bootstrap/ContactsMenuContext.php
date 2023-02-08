@@ -31,7 +31,7 @@ class ContactsMenuContext implements Context, ActorAwareInterface {
 	 * @return Locator
 	 */
 	public static function contactsMenuButton() {
-		return Locator::forThe()->xpath("//*[@id = 'header']//*[@id = 'contactsmenu']//*[@class = 'header-menu__trigger']")->
+		return Locator::forThe()->xpath("//*[@id = 'header']//*[@id = 'contactsmenu']")->
 				describedAs("Contacts menu button");
 	}
 
@@ -39,7 +39,8 @@ class ContactsMenuContext implements Context, ActorAwareInterface {
 	 * @return Locator
 	 */
 	public static function contactsMenu() {
-		return Locator::forThe()->xpath("//*[@id = 'header']//*[@id = 'contactsmenu']//*[@id = 'contactsmenu-menu']")->
+		return Locator::forThe()->css(".menu")->
+				descendantOf(self::contactsMenuButton())->
 				describedAs("Contacts menu");
 	}
 

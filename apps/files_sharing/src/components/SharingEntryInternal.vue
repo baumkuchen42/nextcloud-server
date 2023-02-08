@@ -10,11 +10,12 @@
 			</template>
 
 			<NcActionLink :href="internalLink"
-				:aria-label="copyLinkTooltip"
-				:title="copyLinkTooltip"
+				:aria-label="t('files_sharing', 'Copy internal link to clipboard')"
 				target="_blank"
 				:icon="copied && copySuccess ? 'icon-checkmark-color' : 'icon-clippy'"
-				@click.prevent="copyLink" />
+				@click.prevent="copyLink">
+				{{ clipboardTooltip }}
+			</NcActionLink>
 		</SharingEntrySimple>
 	</ul>
 </template>
@@ -59,18 +60,18 @@ export default {
 		},
 
 		/**
-		 * Tooltip message
+		 * Clipboard v-tooltip message
 		 *
 		 * @return {string}
 		 */
-		copyLinkTooltip() {
+		clipboardTooltip() {
 			if (this.copied) {
 				if (this.copySuccess) {
 					return ''
 				}
 				return t('files_sharing', 'Cannot copy, please copy the link manually')
 			}
-			return t('files_sharing', 'Copy internal link to clipboard')
+			return t('files_sharing', 'Copy to clipboard')
 		},
 
 		internalLinkSubtitle() {
@@ -84,7 +85,7 @@ export default {
 	methods: {
 		async copyLink() {
 			try {
-				await navigator.clipboard.writeText(this.internalLink)
+				await this.$copyText(this.internalLink)
 				showSuccess(t('files_sharing', 'Link copied'))
 				// focus and show the tooltip (note: cannot set ref on NcActionLink)
 				this.$refs.shareEntrySimple.$refs.actionsComponent.$el.focus()

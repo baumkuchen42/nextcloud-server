@@ -25,27 +25,24 @@
 
 namespace OC\Log;
 
-use OC\SystemConfig;
 use OCP\Log\IWriter;
 
-class Errorlog extends LogDetails implements IWriter {
+class Errorlog implements IWriter {
 
 	/** @var string */
 	protected $tag;
 
-	public function __construct(SystemConfig $config, string $tag = 'owncloud') {
-		parent::__construct($config);
+	public function __construct(string $tag = 'owncloud') {
 		$this->tag = $tag;
 	}
 
 	/**
-	 * Write a message in the log
-	 *
+	 * write a message in the log
 	 * @param string $app
-	 * @param string|array $message
+	 * @param string $message
 	 * @param int $level
 	 */
 	public function write(string $app, $message, int $level) {
-		error_log('[' . $this->tag . ']['.$app.']['.$level.'] '.$this->logDetailsAsJSON($app, $message, $level));
+		error_log('[' . $this->tag . ']['.$app.']['.$level.'] '.$message);
 	}
 }

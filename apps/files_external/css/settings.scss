@@ -11,7 +11,7 @@
 }
 
 #externalStorage td {
-	& > input:not(.applicableToAllUsers), & > select {
+	& > input, & > select {
 		width: 100%;
 	}
 }
@@ -101,10 +101,6 @@
 	background-color: rgba(134, 255, 110, 0.9);
 }
 
-#externalStorage td.applicable label {
-	display: inline-flex;
-	align-items: center;
-}
 
 #externalStorage td.applicable div.chzn-container {
 	position: relative;

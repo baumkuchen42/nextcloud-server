@@ -53,12 +53,15 @@ OC.L10N.register(
     "Description: %s" : "Περιγραφή:%s",
     "Where: %s" : "Που:%s",
     "%1$s via %2$s" : "%1$s μέσω %2$s",
-    "Organizer:" : "Διοργανωτής:",
-    "Attendees:" : "Συμμετέχοντες:",
+    "Invitation canceled" : "Η πρόσκληση ακυρώθηκε.",
+    "Invitation updated" : "Ενημερώθηκε η πρόσκληση.",
+    "Invitation" : "Πρόσκληση",
     "Title:" : "Τίτλος:",
     "Time:" : "Ώρα:",
     "Location:" : "Τοποθεσία:",
     "Link:" : "Σύνδεσμος:",
+    "Organizer:" : "Διοργανωτής:",
+    "Attendees:" : "Συμμετέχοντες:",
     "Accept" : "Αποδοχή",
     "Decline" : "Απόρριψη",
     "More options …" : "Περισσότερες επιλογές...",
@@ -125,9 +128,6 @@ OC.L10N.register(
     "You solved todo {todo} in list {calendar}" : "Επίλυσες την εκκρεμότητα {todo} στην λίστα {calendar}",
     "{actor} reopened todo {todo} in list {calendar}" : "{actor} άνοιξε ξανά την εκκρεμότητα {todo} στην λίστα {calendar}",
     "You reopened todo {todo} in list {calendar}" : "Άνοιξες ξανά την εκκρεμότητα {todo} στην λίστα {calendar}",
-    "A calendar <strong>todo</strong> was modified" : "Ενός ημερολογίου η <strong>εκκρεμότητα</strong> τροποποιήθηκε",
-    "Invitation canceled" : "Η πρόσκληση ακυρώθηκε.",
-    "Invitation updated" : "Ενημερώθηκε η πρόσκληση.",
-    "Invitation" : "Πρόσκληση"
+    "A calendar <strong>todo</strong> was modified" : "Ενός ημερολογίου η <strong>εκκρεμότητα</strong> τροποποιήθηκε"
 },
 "nplurals=2; plural=(n != 1);");

@@ -23,7 +23,7 @@
 <template>
 	<li class="sharing-entry">
 		<slot name="avatar" />
-		<div class="sharing-entry__desc">
+		<div v-tooltip="tooltip" class="sharing-entry__desc">
 			<span class="sharing-entry__title">{{ title }}</span>
 			<p v-if="subtitle">
 				{{ subtitle }}
@@ -41,6 +41,7 @@
 
 <script>
 import NcActions from '@nextcloud/vue/dist/Components/NcActions'
+import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip'
 
 export default {
 	name: 'SharingEntrySimple',
@@ -49,11 +50,19 @@ export default {
 		NcActions,
 	},
 
+	directives: {
+		Tooltip,
+	},
+
 	props: {
 		title: {
 			type: String,
 			default: '',
 			required: true,
+		},
+		tooltip: {
+			type: String,
+			default: '',
 		},
 		subtitle: {
 			type: String,

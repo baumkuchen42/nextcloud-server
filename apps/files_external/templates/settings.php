@@ -169,10 +169,7 @@ $canCreateMounts = $_['visibilityType'] === BackendService::VISIBILITY_ADMIN || 
 				<td class="configuration"></td>
 				<?php if ($_['visibilityType'] === BackendService::VISIBILITY_ADMIN): ?>
 					<td class="applicable" align="right">
-						<label><input type="checkbox" class="applicableToAllUsers" checked="" /><?php p($l->t('All users')); ?></label>
-						<div class="applicableUsersContainer">
-							<input type="hidden" class="applicableUsers" style="width:20em;" value="" />
-						</div>
+						<input type="hidden" class="applicableUsers" style="width:20em;" value="" />
 					</td>
 				<?php endif; ?>
 				<td class="mountOptionsToggle hidden">

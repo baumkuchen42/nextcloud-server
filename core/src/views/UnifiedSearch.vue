@@ -20,7 +20,7 @@
   -
   -->
 <template>
-	<NcHeaderMenu id="unified-search"
+	<HeaderMenu id="unified-search"
 		class="unified-search"
 		exclude-click-outside-classes="popover"
 		:open.sync="open"
@@ -150,26 +150,24 @@
 				</li>
 			</ul>
 		</template>
-	</NcHeaderMenu>
+	</HeaderMenu>
 </template>
 
 <script>
-import debounce from 'debounce'
 import { emit, subscribe, unsubscribe } from '@nextcloud/event-bus'
+import { minSearchLength, getTypes, search, defaultLimit, regexFilterIn, regexFilterNot, enableLiveSearch } from '../services/UnifiedSearchService'
 import { showError } from '@nextcloud/dialogs'
 
-import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
-import NcActions from '@nextcloud/vue/dist/Components/NcActions.js'
-import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent.js'
-import NcHeaderMenu from '@nextcloud/vue/dist/Components/NcHeaderMenu.js'
-import NcHighlight from '@nextcloud/vue/dist/Components/NcHighlight.js'
+import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton'
+import NcActions from '@nextcloud/vue/dist/Components/NcActions'
+import debounce from 'debounce'
+import NcEmptyContent from '@nextcloud/vue/dist/Components/NcEmptyContent'
+import NcHighlight from '@nextcloud/vue/dist/Components/NcHighlight'
+import Magnify from 'vue-material-design-icons/Magnify'
 
-import Magnify from 'vue-material-design-icons/Magnify.vue'
-
-import SearchResult from '../components/UnifiedSearch/SearchResult.vue'
-import SearchResultPlaceholders from '../components/UnifiedSearch/SearchResultPlaceholders.vue'
-
-import { minSearchLength, getTypes, search, defaultLimit, regexFilterIn, regexFilterNot, enableLiveSearch } from '../services/UnifiedSearchService.js'
+import HeaderMenu from '../components/HeaderMenu'
+import SearchResult from '../components/UnifiedSearch/SearchResult'
+import SearchResultPlaceholders from '../components/UnifiedSearch/SearchResultPlaceholders'
 
 const REQUEST_FAILED = 0
 const REQUEST_OK = 1
@@ -179,12 +177,12 @@ export default {
 	name: 'UnifiedSearch',
 
 	components: {
-		Magnify,
 		NcActionButton,
 		NcActions,
 		NcEmptyContent,
-		NcHeaderMenu,
+		HeaderMenu,
 		NcHighlight,
+		Magnify,
 		SearchResult,
 		SearchResultPlaceholders,
 	},
@@ -354,6 +352,7 @@ export default {
 			if (event.ctrlKey && event.key === 'f' && !this.open) {
 				event.preventDefault()
 				this.open = true
+				this.focusInput()
 			}
 
 			// https://www.w3.org/WAI/GL/wiki/Using_ARIA_menus
@@ -373,6 +372,7 @@ export default {
 
 	methods: {
 		async onOpen() {
+			this.focusInput()
 			// Update types list in the background
 			this.types = await getTypes()
 		},

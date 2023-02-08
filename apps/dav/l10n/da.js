@@ -55,12 +55,15 @@ OC.L10N.register(
     "Description: %s" : "Beskrivelse: %s",
     "Where: %s" : "Hvor: %s",
     "%1$s via %2$s" : "%1$s via %2$s",
-    "Organizer:" : "Arrangør:",
-    "Attendees:" : "Deltagere:",
+    "Invitation canceled" : "Invitation annulleret",
+    "Invitation updated" : "Invitation opdateret ",
+    "Invitation" : "Invitation",
     "Title:" : "Titel:",
     "Time:" : "Tid:",
     "Location:" : "Sted:",
     "Link:" : "Link:",
+    "Organizer:" : "Arrangør:",
+    "Attendees:" : "Deltagere:",
     "Accept" : "Accepter",
     "Decline" : "Afvis",
     "More options …" : "Flere indstillinger…",
@@ -101,9 +104,6 @@ OC.L10N.register(
     "You solved todo {todo} in list {calendar}" : "Du løste opgaven {todo} i listen {calendar}",
     "{actor} reopened todo {todo} in list {calendar}" : "{actor} genåbnede opgaven {todo} i listen {calendar}",
     "You reopened todo {todo} in list {calendar}" : "Du genåbnede opgaven {todo} i listen {calendar}",
-    "A calendar <strong>todo</strong> was modified" : "En kalender  <strong>opgave</strong> blev ændret",
-    "Invitation canceled" : "Invitation annulleret",
-    "Invitation updated" : "Invitation opdateret ",
-    "Invitation" : "Invitation"
+    "A calendar <strong>todo</strong> was modified" : "En kalender  <strong>opgave</strong> blev ændret"
 },
 "nplurals=2; plural=(n != 1);");

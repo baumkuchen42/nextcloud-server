@@ -381,7 +381,8 @@ const ContactsMenuView = View.extend({
 
 /**
  * @param {Object} options
- * @param {string} options.el
+ * @param {jQuery} options.el
+ * @param {jQuery} options.trigger
  * @class ContactsMenu
  * @memberOf OC
  */
@@ -390,8 +391,11 @@ const ContactsMenu = function(options) {
 }
 
 ContactsMenu.prototype = {
-	/** @type {string} */
+	/** @type {jQuery} */
 	$el: undefined,
+
+	/** @type {jQuery} */
+	_$trigger: undefined,
 
 	/** @type {ContactsMenuView} */
 	_view: undefined,
@@ -401,19 +405,41 @@ ContactsMenu.prototype = {
 
 	/**
 	 * @param {Object} options
-	 * @param {string} options.el - the selector of the element to render the menu in
+	 * @param {jQuery} options.el - the element to render the menu in
+	 * @param {jQuery} options.trigger - the element to click on to open the menu
 	 * @returns {undefined}
 	 */
 	initialize: function(options) {
-		this.$el = $(options.el)
+		this.$el = options.el
+		this._$trigger = options.trigger
 
 		this._view = new ContactsMenuView({
-			el: this.$el,
+			el: this.$el
 		})
-
 		this._view.on('search', function(searchTerm) {
-			this.loadContacts(searchTerm)
+			this._loadContacts(searchTerm)
 		}, this)
+
+		OC.registerMenu(this._$trigger, this.$el, function() {
+			this._toggleVisibility(true)
+		}.bind(this), true)
+		this.$el.on('beforeHide', function() {
+			this._toggleVisibility(false)
+		}.bind(this))
+	},
+
+	/**
+	 * @private
+	 * @param {boolean} show
+	 * @returns {Promise}
+	 */
+	_toggleVisibility: function(show) {
+		if (show) {
+			return this._loadContacts()
+		} else {
+			this.$el.html('')
+			return Promise.resolve()
+		}
 	},
 
 	/**
@@ -435,7 +461,7 @@ ContactsMenu.prototype = {
 	 * @param {string|undefined} searchTerm
 	 * @returns {undefined}
 	 */
-	loadContacts: function(searchTerm) {
+	_loadContacts: function(searchTerm) {
 		var self = this
 
 		if (!self._contactsPromise) {

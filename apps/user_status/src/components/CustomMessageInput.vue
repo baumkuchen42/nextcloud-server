@@ -19,27 +19,26 @@
   -
   -->
 <template>
-	<div class="custom-input">
-		<NcEmojiPicker container=".custom-input" @select="setIcon">
-			<NcButton class="custom-input__emoji-button" type="tertiary">
+	<div class="custom-input__form">
+		<NcEmojiPicker container=".custom-input__form" @select="setIcon">
+			<NcButton class="custom-input__emoji-button" type="tertiary-no-background">
 				{{ visibleIcon }}
 			</NcButton>
 		</NcEmojiPicker>
-		<div class="custom-input__container">
-			<label class="hidden-visually" for="user_status_message">
-				{{ t('user_status', 'What is your status?') }}
-			</label>
-			<input id="user_status_message"
-				ref="input"
-				maxlength="80"
-				:disabled="disabled"
-				:placeholder="$t('user_status', 'What is your status?')"
-				type="text"
-				:value="message"
-				@change="onChange"
-				@keyup="onKeyup"
-				@paste="onKeyup">
-		</div>
+		<label class="hidden-visually" for="user_status_message">
+			{{ t('user_status', 'What is your status?') }}
+		</label>
+		<input id="user_status_message"
+			ref="input"
+			maxlength="80"
+			:disabled="disabled"
+			:placeholder="$t('user_status', 'What is your status?')"
+			type="text"
+			:value="message"
+			@change="change"
+			@keyup="change"
+			@paste="change"
+			@keyup.enter="submit">
 	</div>
 </template>
 
@@ -98,11 +97,11 @@ export default {
 		 *
 		 * @param {Event} event The Change Event
 		 */
-		onKeyup(event) {
+		change(event) {
 			this.$emit('change', event.target.value)
 		},
 
-		onChange(event) {
+		submit(event) {
 			this.$emit('submit', event.target.value)
 		},
 
@@ -114,30 +113,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.custom-input {
-	display: flex;
-	width: 100%;
+.custom-input__form {
+	flex-grow: 1;
+	position: relative;
 
-	&__emoji-button {
-		min-height: 36px;
-		padding: 0;
-		border: 2px solid var(--color-border-maxcontrast);
-		border-right: none;
-		border-radius: var(--border-radius) 0 0 var(--border-radius);
-
-		&:hover {
-			border-color: var(--color-primary-element);
-		}
+	.v-popper {
+		position: absolute;
 	}
 
-	&__container {
+	input {
 		width: 100%;
-
-		input {
-			width: 100%;
-			margin: 0;
-			border-radius: 0 var(--border-radius) var(--border-radius) 0;
-		}
+		border-radius: 0 var(--border-radius) var(--border-radius) 0;
+		padding-left: 44px !important;
 	}
 }
 </style>

@@ -110,6 +110,7 @@ OC.L10N.register(
     "{user} moved {oldfile} to {newfile}" : "{user}-მა გადაიტანა {oldfile} {newfile}-ად",
     "A file has been added to or removed from your <strong>favorites</strong>" : "ყველა ფაილი დაემატა ან ამოიშალა<strong>რჩეულებიდან</strong>",
     "All files" : "ყველა ფაილი",
+    "Unlimited" : "ულიმიტო",
     "Upload (max. %s)" : "ატვირთვა (მაქს. %s)",
     "Accept" : "მიღება",
     "in %s" : "%s-ში",
@@ -120,6 +121,9 @@ OC.L10N.register(
     "Copy to clipboard" : "კოპირება ბუფერში",
     "Cancel" : "უარყოფა",
     "Create" : "შექმნა",
+    "%s used" : "%s მოხმარებულია",
+    "%1$s of %2$s used" : "გამოყენებულია %1$s სულ %2$s-იდან ",
+    "WebDAV" : "WebDAV",
     "No files in here" : "აქ ფაილები არაა",
     "Upload some content or sync with your devices!" : "ატვირთეთ რამე ან მოახდინეთ სინქრონიზაცია თქვენს მოწყობილობებთან!",
     "No entries found in this folder" : "ამ დირექტორიაში შენატანები ვერ იქნა ნაპოვნი",
@@ -140,10 +144,6 @@ OC.L10N.register(
     "You don’t have permission to upload or create files here" : "აქ ფაილების შექმნის ან ატვირთვის უფლება არ გაქვთ",
     "New" : "ახალი",
     "Copied!" : "დაკოპირდა!",
-    "Unlimited" : "ულიმიტო",
-    "%s used" : "%s მოხმარებულია",
-    "%1$s of %2$s used" : "გამოყენებულია %1$s სულ %2$s-იდან ",
-    "Settings" : "პარამეტრები",
-    "WebDAV" : "WebDAV"
+    "Settings" : "პარამეტრები"
 },
 "nplurals=2; plural=(n!=1);");

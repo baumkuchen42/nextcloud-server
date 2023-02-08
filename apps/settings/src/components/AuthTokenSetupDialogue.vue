@@ -55,15 +55,14 @@
 				class="monospaced"
 				readonly="readonly"
 				@focus="selectInput">
-			<NcButton type="tertiary"
-				:title="copyTooltipOptions"
-				:aria-label="copyTooltipOptions"
-				@click="copyPassword">
-				<template #icon>
-					<Check v-if="copied" :size="20" />
-					<ContentCopy v-else :size="20" />
-				</template>
-			</NcButton>
+			<a ref="clipboardButton"
+				v-tooltip="copyTooltipOptions"
+				v-clipboard:copy="appPassword"
+				v-clipboard:success="onCopyPassword"
+				v-clipboard:error="onCopyPasswordFailed"
+				class="icon icon-clippy"
+				@mouseover="hoveringCopyButton = true"
+				@mouseleave="hoveringCopyButton = false" />
 			<NcButton @click="reset">
 				{{ t('settings', 'Done') }}
 			</NcButton>
@@ -84,20 +83,14 @@
 import QR from '@chenfengyuan/vue-qrcode'
 import { confirmPassword } from '@nextcloud/password-confirmation'
 import '@nextcloud/password-confirmation/dist/style.css'
-import { showError } from '@nextcloud/dialogs'
 import { getRootUrl } from '@nextcloud/router'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton'
-
-import Check from 'vue-material-design-icons/Check.vue'
-import ContentCopy from 'vue-material-design-icons/ContentCopy.vue'
 
 export default {
 	name: 'AuthTokenSetupDialogue',
 	components: {
-		Check,
-		ContentCopy,
-		NcButton,
 		QR,
+		NcButton,
 	},
 	props: {
 		add: {
@@ -112,17 +105,32 @@ export default {
 			deviceName: '',
 			appPassword: '',
 			loginName: '',
-			copied: false,
+			passwordCopied: false,
 			showQR: false,
 			qrUrl: '',
+			hoveringCopyButton: false,
 		}
 	},
 	computed: {
 		copyTooltipOptions() {
-			if (this.copied) {
-				return t('settings', 'Copied!')
+			const base = {
+				hideOnTargetClick: false,
+				trigger: 'manual',
 			}
-			return t('settings', 'Copy')
+
+			if (this.passwordCopied) {
+				return {
+					...base,
+					content: t('settings', 'Copied!'),
+					show: true,
+				}
+			} else {
+				return {
+					...base,
+					content: t('settings', 'Copy'),
+					show: this.hoveringCopyButton,
+				}
+			}
 		},
 	},
 	methods: {
@@ -154,19 +162,13 @@ export default {
 					this.reset()
 				})
 		},
-		async copyPassword() {
-			try {
-				await navigator.clipboard.writeText(this.appPassword)
-				this.copied = true
-			} catch (e) {
-				this.copied = false
-				console.error(e)
-				showError(t('settings', 'Could not copy app password. Please copy it manually.'))
-			} finally {
-				setTimeout(() => {
-					this.copied = false
-				}, 4000)
-			}
+		onCopyPassword() {
+			this.passwordCopied = true
+			this.$refs.clipboardButton.blur()
+			setTimeout(() => { this.passwordCopied = false }, 3000)
+		},
+		onCopyPasswordFailed() {
+			OC.Notification.showTemporary(t('settings', 'Could not copy app password. Please copy it manually.'))
 		},
 		reset() {
 			this.adding = false

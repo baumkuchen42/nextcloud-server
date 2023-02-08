@@ -50,6 +50,8 @@ OC.L10N.register(
     "Description: %s" : "Priskribo: %s",
     "Where: %s" : "Kie: %s",
     "%1$s via %2$s" : "%1$s pere de %2$s",
+    "Invitation canceled" : "Invito nuligita",
+    "Invitation updated" : "Invito ĝisdatigita",
     "Location:" : "Loko:",
     "Link:" : "Ligilo:",
     "Accept" : "Akcepti",
@@ -97,8 +99,6 @@ OC.L10N.register(
     "You solved todo {todo} in list {calendar}" : "Vi plenumis farendaĵon {todo} en listo {calendar}",
     "{actor} reopened todo {todo} in list {calendar}" : "{actor} remalfermis farendaĵon {todo} en listo {calendar}",
     "You reopened todo {todo} in list {calendar}" : "Vi remalfermis farendaĵon {todo} en listo {calendar}",
-    "A calendar <strong>todo</strong> was modified" : "Kalendara <strong>farendaĵo</strong> estis modifita",
-    "Invitation canceled" : "Invito nuligita",
-    "Invitation updated" : "Invito ĝisdatigita"
+    "A calendar <strong>todo</strong> was modified" : "Kalendara <strong>farendaĵo</strong> estis modifita"
 },
 "nplurals=2; plural=(n != 1);");

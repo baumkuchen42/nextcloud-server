@@ -128,8 +128,6 @@ class LostController extends Controller {
 	 *
 	 * @PublicPage
 	 * @NoCSRFRequired
-	 * @BruteForceProtection(action=passwordResetEmail)
-	 * @AnonRateThrottle(limit=10, period=300)
 	 */
 	public function resetform(string $token, string $userId): TemplateResponse {
 		try {
@@ -139,14 +137,12 @@ class LostController extends Controller {
 				|| ($e instanceof InvalidTokenException
 					&& !in_array($e->getCode(), [InvalidTokenException::TOKEN_NOT_FOUND, InvalidTokenException::USER_UNKNOWN]))
 			) {
-				$response = new TemplateResponse(
+				return new TemplateResponse(
 					'core', 'error', [
 						"errors" => [["error" => $e->getMessage()]]
 					],
 					TemplateResponse::RENDER_AS_GUEST
 				);
-				$response->throttle();
-				return $response;
 			}
 			return new TemplateResponse('core', 'error', [
 				'errors' => [['error' => $this->l10n->t('Password reset is disabled')]]

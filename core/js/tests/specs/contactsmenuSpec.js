@@ -32,7 +32,7 @@ describe('Contacts menu', function() {
 	 * @returns {Promise}
 	 */
 	function openMenu() {
-		return menu.loadContacts();
+		return menu._toggleVisibility(true);
 	}
 
 	beforeEach(function(done) {

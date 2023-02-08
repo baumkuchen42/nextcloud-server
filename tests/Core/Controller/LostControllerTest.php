@@ -171,7 +171,6 @@ class LostControllerTest extends TestCase {
 				]
 			],
 			'guest');
-		$expectedResponse->throttle();
 		$this->assertEquals($expectedResponse, $response);
 	}
 

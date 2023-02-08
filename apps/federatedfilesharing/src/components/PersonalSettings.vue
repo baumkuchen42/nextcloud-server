@@ -24,8 +24,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 			{{ t('federatedfilesharing', 'Your Federated Cloud ID:') }}
 			<strong id="cloudid">{{ cloudId }}</strong>
 			<NcButton ref="clipboard"
-				:title="copyLinkTooltip"
-				:aria-label="copyLinkTooltip"
+				v-tooltip="copyLinkTooltip"
 				class="clipboard"
 				type="tertiary-no-background"
 				@click.prevent="copyCloudId">
@@ -87,7 +86,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 </template>
 
 <script>
-import { showError, showSuccess } from '@nextcloud/dialogs'
+import { showError } from '@nextcloud/dialogs'
 import { loadState } from '@nextcloud/initial-state'
 import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton'
@@ -95,6 +94,7 @@ import Twitter from 'vue-material-design-icons/Twitter'
 import Facebook from 'vue-material-design-icons/Facebook'
 import Web from 'vue-material-design-icons/Web'
 import Clipboard from 'vue-material-design-icons/Clipboard'
+import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip'
 
 export default {
 	name: 'PersonalSettings',
@@ -105,6 +105,9 @@ export default {
 		Facebook,
 		Web,
 		Clipboard,
+	},
+	directives: {
+		Tooltip,
 	},
 	data() {
 		return {
@@ -162,7 +165,6 @@ export default {
 			}
 			await navigator.clipboard.writeText(this.cloudId)
 			this.isCopied = true
-			showSuccess(t('federatedfilesharing', 'Copied!'))
 			this.$refs.clipboard.$el.focus()
 		},
 		goTo(url) {

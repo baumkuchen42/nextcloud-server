@@ -34,8 +34,9 @@
 			<SharingEntrySimple v-if="isSharedWithMe" v-bind="sharedWithMe" class="sharing-entry__reshare">
 				<template #avatar>
 					<NcAvatar :user="sharedWithMe.user"
-						:title="sharedWithMe.displayName"
-						class="sharing-entry__avatar" />
+						:display-name="sharedWithMe.displayName"
+						class="sharing-entry__avatar"
+						tooltip-message="" />
 				</template>
 			</SharingEntrySimple>
 

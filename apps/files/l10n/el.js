@@ -152,6 +152,7 @@ OC.L10N.register(
     "A file or folder has been <strong>changed</strong>" : "Ένα αρχείο ή κατάλογος έχουν <strong>αλλάξει</strong>",
     "A favorite file or folder has been <strong>changed</strong>" : "Ένα αγαπημένο αρχείο ή φάκελός σας έχει <strong>τροποποιηθεί</strong>.",
     "All files" : "Όλα τα αρχεία",
+    "Unlimited" : "Απεριόριστο",
     "Upload (max. %s)" : "Μεταφόρτωση (max. %s)",
     "Accept" : "Αποδοχή",
     "Reject" : "Απόρριψη",
@@ -196,6 +197,10 @@ OC.L10N.register(
     "Set up templates folder" : "Ρύθμιση φακέλου προτύπων",
     "Templates" : "Πρότυπα",
     "Unable to initialize the templates directory" : "Δεν είναι δυνατή η προετοιμασία του καταλόγου προτύπων",
+    "%s used" : "%s σε χρήση",
+    "%s%%" : "%s%%",
+    "%1$s of %2$s used" : "χρησιμοποιούνται %1$s από %2$s",
+    "WebDAV" : "WebDAV",
     "Toggle %1$s sublist" : "Εναλλαγή %1$s σε υπολίστα",
     "Toggle grid view" : "Εναλλαγή σε προβολή πλέγματος",
     "No files in here" : "Δεν υπάρχουν αρχεία εδώ",
@@ -220,12 +225,7 @@ OC.L10N.register(
     "You don’t have permission to upload or create files here" : "Δεν έχετε δικαιώματα μεταφόρτωσης ή δημιουργίας αρχείων εδώ",
     "New" : "Νέο",
     "Copied!" : "Αντιγράφηκε!",
-    "Unlimited" : "Απεριόριστο",
     "Cannot transfer ownership of a file or folder you don't own" : "Δεν μπορεί να μεταβιβαστεί η κυριότητα αρχείου ή φακέλου που δεν σας ανήκει",
-    "%s used" : "%s σε χρήση",
-    "%s%%" : "%s%%",
-    "%1$s of %2$s used" : "χρησιμοποιούνται %1$s από %2$s",
-    "Settings" : "Ρυθμίσεις",
-    "WebDAV" : "WebDAV"
+    "Settings" : "Ρυθμίσεις"
 },
 "nplurals=2; plural=(n != 1);");

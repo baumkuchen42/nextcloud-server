@@ -1163,8 +1163,9 @@ class UsersControllerTest extends TestCase {
 			->method('getDisplayName')
 			->willReturn('Demo User');
 		$targetUser
-			->expects($this->never())
-			->method('getHome');
+			->expects($this->once())
+			->method('getHome')
+			->willReturn('/var/www/newtcloud/data/UID');
 		$targetUser
 			->expects($this->once())
 			->method('getLastLogin')
@@ -1202,6 +1203,7 @@ class UsersControllerTest extends TestCase {
 		$expected = [
 			'id' => 'UID',
 			'enabled' => true,
+			'storageLocation' => '/var/www/newtcloud/data/UID',
 			'lastLogin' => 1521191471000,
 			'backend' => 'Database',
 			'subadmin' => [],
@@ -1343,8 +1345,9 @@ class UsersControllerTest extends TestCase {
 			->method('getUID')
 			->willReturn('UID');
 		$targetUser
-			->expects($this->never())
-			->method('getHome');
+			->expects($this->once())
+			->method('getHome')
+			->willReturn('/var/www/newtcloud/data/UID');
 		$targetUser
 			->expects($this->once())
 			->method('getLastLogin')
@@ -1377,6 +1380,7 @@ class UsersControllerTest extends TestCase {
 
 		$expected = [
 			'id' => 'UID',
+			'storageLocation' => '/var/www/newtcloud/data/UID',
 			'lastLogin' => 1521191471000,
 			'backend' => 'Database',
 			'subadmin' => [],

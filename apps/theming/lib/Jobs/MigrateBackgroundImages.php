@@ -30,7 +30,6 @@ use OCA\Theming\AppInfo\Application;
 use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\BackgroundJob\IJobList;
 use OCP\BackgroundJob\QueuedJob;
-use OCP\DB\QueryBuilder\IQueryBuilder;
 use OCP\Files\AppData\IAppDataFactory;
 use OCP\Files\IAppData;
 use OCP\Files\NotFoundException;
@@ -93,7 +92,7 @@ class MigrateBackgroundImages extends QueuedJob {
 				->from('preferences')
 				->where($selector->expr()->eq('appid', $selector->createNamedParameter('theming')))
 				->andWhere($selector->expr()->eq('configkey', $selector->createNamedParameter('background')))
-				->andWhere($selector->expr()->eq('configvalue', $selector->createNamedParameter('custom', IQueryBuilder::PARAM_STR), IQueryBuilder::PARAM_STR))
+				->andWhere($selector->expr()->eq('configvalue', $selector->createNamedParameter('custom')))
 				->executeQuery();
 
 			$userIds = $result->fetchAll(\PDO::FETCH_COLUMN);

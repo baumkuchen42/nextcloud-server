@@ -43,45 +43,40 @@ class DefinitionParameter implements \JsonSerializable {
 	public const FLAG_USER_PROVIDED = 2;
 
 	/** @var string name of parameter */
-	private string $name;
+	private $name;
 
 	/** @var string human-readable parameter text */
-	private string $text;
+	private $text;
 
 	/** @var string human-readable parameter tooltip */
-	private string $tooltip = '';
+	private $tooltip = '';
 
 	/** @var int value type, see self::VALUE_* constants */
-	private int $type = self::VALUE_TEXT;
+	private $type = self::VALUE_TEXT;
 
 	/** @var int flags, see self::FLAG_* constants */
-	private int $flags = self::FLAG_NONE;
-
-	/** @var mixed */
-	private $defaultValue;
+	private $flags = self::FLAG_NONE;
 
 	/**
-	 * @param string $name parameter name
-	 * @param string $text parameter description
-	 * @param mixed $defaultValue default value
+	 * @param string $name
+	 * @param string $text
 	 */
-	public function __construct(string $name, string $text, $defaultValue = null) {
+	public function __construct($name, $text) {
 		$this->name = $name;
 		$this->text = $text;
-		$this->defaultValue = $defaultValue;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getName(): string {
+	public function getName() {
 		return $this->name;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getText(): string {
+	public function getText() {
 		return $this->text;
 	}
 
@@ -90,7 +85,7 @@ class DefinitionParameter implements \JsonSerializable {
 	 *
 	 * @return int
 	 */
-	public function getType(): int {
+	public function getType() {
 		return $this->type;
 	}
 
@@ -100,31 +95,15 @@ class DefinitionParameter implements \JsonSerializable {
 	 * @param int $type
 	 * @return self
 	 */
-	public function setType(int $type) {
+	public function setType($type) {
 		$this->type = $type;
-		return $this;
-	}
-
-	/**
-	 * @return mixed default value
-	 */
-	public function getDefaultValue() {
-		return $this->defaultValue;
-	}
-
-	/**
-	 * @param mixed $defaultValue default value
-	 * @return self
-	 */
-	public function setDefaultValue($defaultValue) {
-		$this->defaultValue = $defaultValue;
 		return $this;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getTypeName(): string {
+	public function getTypeName() {
 		switch ($this->type) {
 			case self::VALUE_BOOLEAN:
 				return 'boolean';
@@ -140,7 +119,7 @@ class DefinitionParameter implements \JsonSerializable {
 	/**
 	 * @return int
 	 */
-	public function getFlags(): int {
+	public function getFlags() {
 		return $this->flags;
 	}
 
@@ -148,7 +127,7 @@ class DefinitionParameter implements \JsonSerializable {
 	 * @param int $flags
 	 * @return self
 	 */
-	public function setFlags(int $flags) {
+	public function setFlags($flags) {
 		$this->flags = $flags;
 		return $this;
 	}
@@ -157,7 +136,7 @@ class DefinitionParameter implements \JsonSerializable {
 	 * @param int $flag
 	 * @return self
 	 */
-	public function setFlag(int $flag) {
+	public function setFlag($flag) {
 		$this->flags |= $flag;
 		return $this;
 	}
@@ -166,7 +145,7 @@ class DefinitionParameter implements \JsonSerializable {
 	 * @param int $flag
 	 * @return bool
 	 */
-	public function isFlagSet(int $flag): bool {
+	public function isFlagSet($flag) {
 		return (bool)($this->flags & $flag);
 	}
 
@@ -190,20 +169,15 @@ class DefinitionParameter implements \JsonSerializable {
 	 * Serialize into JSON for client-side JS
 	 */
 	public function jsonSerialize(): array {
-		$result = [
+		return [
 			'value' => $this->getText(),
 			'flags' => $this->getFlags(),
 			'type' => $this->getType(),
 			'tooltip' => $this->getTooltip(),
 		];
-		$defaultValue = $this->getDefaultValue();
-		if ($defaultValue) {
-			$result['defaultValue'] = $defaultValue;
-		}
-		return $result;
 	}
 
-	public function isOptional(): bool {
+	public function isOptional() {
 		return $this->isFlagSet(self::FLAG_OPTIONAL) || $this->isFlagSet(self::FLAG_USER_PROVIDED);
 	}
 
@@ -214,7 +188,7 @@ class DefinitionParameter implements \JsonSerializable {
 	 * @param mixed $value Value to check
 	 * @return bool success
 	 */
-	public function validateValue(&$value): bool {
+	public function validateValue(&$value) {
 		switch ($this->getType()) {
 			case self::VALUE_BOOLEAN:
 				if (!is_bool($value)) {

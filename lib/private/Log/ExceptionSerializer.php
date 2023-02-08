@@ -223,13 +223,13 @@ class ExceptionSerializer {
 	}
 
 	private function encodeTrace($trace) {
-		$trace = array_map(function (array $line) {
+		$filteredTrace = $this->filterTrace($trace);
+		return array_map(function (array $line) {
 			if (isset($line['args'])) {
 				$line['args'] = array_map([$this, 'encodeArg'], $line['args']);
 			}
 			return $line;
-		}, $trace);
-		return $this->filterTrace($trace);
+		}, $filteredTrace);
 	}
 
 	private function encodeArg($arg, $nestingLevel = 5) {

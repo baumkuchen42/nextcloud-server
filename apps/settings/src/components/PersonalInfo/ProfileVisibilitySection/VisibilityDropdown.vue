@@ -24,7 +24,7 @@
 	<div class="visibility-container"
 		:class="{ disabled }">
 		<label :for="inputId">
-			{{ displayId }}
+			{{ t('settings', '{displayId}', { displayId }) }}
 		</label>
 		<NcMultiselect :id="inputId"
 			class="visibility-container__multiselect"

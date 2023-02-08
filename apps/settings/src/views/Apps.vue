@@ -98,11 +98,11 @@
 				<!-- Featured/Supported badges -->
 				<div v-if="app.level === 300 || app.level === 200 || hasRating" class="app-level">
 					<span v-if="app.level === 300"
-						:title="t('settings', 'This app is supported via your current Nextcloud subscription.')"
+						v-tooltip.auto="t('settings', 'This app is supported via your current Nextcloud subscription.')"
 						class="supported icon-checkmark-color">
 						{{ t('settings', 'Supported') }}</span>
 					<span v-if="app.level === 200"
-						:title="t('settings', 'Featured apps are developed by and within the community. They offer central functionality and are ready for production use.')"
+						v-tooltip.auto="t('settings', 'Featured apps are developed by and within the community. They offer central functionality and are ready for production use.')"
 						class="official icon-checkmark">
 						{{ t('settings', 'Featured') }}</span>
 					<AppScore v-if="hasRating" :score="app.appstoreData.ratingOverall" />

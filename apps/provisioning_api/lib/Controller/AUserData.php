@@ -104,7 +104,6 @@ abstract class AUserData extends OCSController {
 	 */
 	protected function getUserData(string $userId, bool $includeScopes = false): array {
 		$currentLoggedInUser = $this->userSession->getUser();
-		assert($currentLoggedInUser !== null, 'No user logged in');
 
 		$data = [];
 
@@ -114,8 +113,8 @@ abstract class AUserData extends OCSController {
 			throw new OCSNotFoundException('User does not exist');
 		}
 
-		$isAdmin = $this->groupManager->isAdmin($currentLoggedInUser->getUID());
-		if ($isAdmin
+		// Should be at least Admin Or SubAdmin!
+		if ($this->groupManager->isAdmin($currentLoggedInUser->getUID())
 			|| $this->groupManager->getSubAdmin()->isUserAccessible($currentLoggedInUser, $targetUserObject)) {
 			$data['enabled'] = $this->config->getUserValue($targetUserObject->getUID(), 'core', 'enabled', 'true') === 'true';
 		} else {
@@ -133,15 +132,13 @@ abstract class AUserData extends OCSController {
 			$gids[] = $group->getGID();
 		}
 
-		if ($isAdmin) {
-			try {
-				# might be thrown by LDAP due to handling of users disappears
-				# from the external source (reasons unknown to us)
-				# cf. https://github.com/nextcloud/server/issues/12991
-				$data['storageLocation'] = $targetUserObject->getHome();
-			} catch (NoUserException $e) {
-				throw new OCSNotFoundException($e->getMessage(), $e);
-			}
+		try {
+			# might be thrown by LDAP due to handling of users disappears
+			# from the external source (reasons unknown to us)
+			# cf. https://github.com/nextcloud/server/issues/12991
+			$data['storageLocation'] = $targetUserObject->getHome();
+		} catch (NoUserException $e) {
+			throw new OCSNotFoundException($e->getMessage(), $e);
 		}
 
 		// Find the data
@@ -270,18 +267,6 @@ abstract class AUserData extends OCSController {
 				self::USER_FIELD_QUOTA => $quota !== false ? $quota : 'none',
 				'used' => 0
 			];
-		} catch (\Exception $e) {
-			\OC::$server->get(\Psr\Log\LoggerInterface::class)->error(
-				"Could not load storage info for {user}",
-				[
-					'app' => 'provisioning_api',
-					'user' => $userId,
-					'exception' => $e,
-				]
-			);
-			/* In case the Exception left things in a bad state */
-			\OC_Util::tearDownFS();
-			return [];
 		}
 		return $data;
 	}
