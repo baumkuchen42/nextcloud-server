@@ -147,6 +147,7 @@
     "Files cannot be shared with create permissions" : "Dateien mit Erstell-Berechtigungen können nicht geteilt werden",
     "Expiration date is in the past" : "Das Ablaufdatum liegt in der Vergangenheit.",
     "_Cannot set expiration date more than %n day in the future_::_Cannot set expiration date more than %n days in the future_" : ["Das Ablaufdatum kann nicht mehr als %n Tag in der Zukunft liegen","Das Ablaufdatum kann nicht mehr als %n Tage in der Zukunft liegen"],
+    "_Cannot set expiration date earlier than %n day from now_::_Cannot set expiration date earlier than %n days from now_" : ["Kann Ablaufdatum nicht früher als %n Tag setzen.","Kann Ablaufdatum nicht früher als %n Tage setzen."],
     "Sharing is only allowed with group members" : "Teilen ist nur mit Gruppenmitgliedern erlaubt",
     "Sharing %s failed, because this item is already shared with user %s" : "Freigabe von %s fehlgeschlagen, da dieses Element schon mit dem Benutzer %s geteilt wird",
     "%1$s shared »%2$s« with you" : "%1$s hat »%2$s« mit Ihnen geteilt",

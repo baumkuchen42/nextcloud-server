@@ -143,14 +143,13 @@
 			<?php p($l->t('Expire min after'). ' '); ?>
 			<input type="text" name='shareapi_expire_min_after_n_days' id="shareapiExpireAfterMinNDays" placeholder="<?php p('0')?>"
 				value='<?php p($_['shareExpireMinAfterNDays']) ?>' />
-			<?php p($l->t('days')); ?>
+			<?php p($l->t('day(s)')); ?>
 			<br>
 			<?php p($l->t('Expire max after'). ' '); ?>
 			<input type="text" name='shareapi_expire_after_n_days' id="shareapiExpireAfterNDays" placeholder="<?php p('7')?>"
 				value='<?php p($_['shareExpireAfterNDays']) ?>' />
-			<?php p($l->t('days')); ?>
-			<br>
 			<?php p($l->t('day(s)')); ?>
+			<br>
 			<input type="checkbox" name="shareapi_enforce_expire_date" id="shareapiEnforceExpireDate" class="checkbox"
 				value="1" <?php if ($_['shareEnforceExpireDate'] === 'yes') {
 	print_unescaped('checked="checked"');
