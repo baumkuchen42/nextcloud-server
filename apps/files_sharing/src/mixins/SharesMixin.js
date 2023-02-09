@@ -145,6 +145,7 @@ export default {
 			if (share.expirationDate) {
 				const date = share.expirationDate
 				if (!date.isValid()) {
+					// TODO: also check if it's in the boundaries of min and max expire date
 					return false
 				}
 			}
@@ -180,6 +181,8 @@ export default {
 		 * @param {Date} date
 		 */
 		onExpirationChange(date) {
+			// eslint-disable-next-line no-console
+			console.log('expiration date: %d', date)
 			this.share.expireDate = this.formatDateToString(date)
 			this.queueUpdate('expireDate')
 		},
