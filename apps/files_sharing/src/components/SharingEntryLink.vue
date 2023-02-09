@@ -103,12 +103,12 @@
 				:hide-label="true"
 				:value="new Date(share.expireDate)"
 				type="date"
-				:min="dateTomorrow"
+				:min="dateMinEnforced"
 				:max="dateMaxEnforced"
 				@input="onExpirationChange">
 				<!-- let's not submit when picked, the user
 					might want to still edit or copy the password -->
-				{{ t('files_sharing', 'Enter a date') }}
+				{{ t('files_sharing', 'Enter a date') }} <!-- this tooltip is overwritten when default expire date is set -->
 			</NcActionInput>
 
 			<NcActionButton icon="icon-checkmark" @click.prevent.stop="onNewLinkShare">
