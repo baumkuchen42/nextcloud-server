@@ -103,7 +103,7 @@
 				:hide-label="true"
 				:value="new Date(share.expireDate)"
 				type="date"
-				:min="dateTomorrow"
+				:min="dateMinEnforced"
 				:max="dateMaxEnforced"
 				@input="onExpirationChange">
 				<!-- let's not submit when picked, the user
